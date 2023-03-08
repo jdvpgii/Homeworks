@@ -7,15 +7,15 @@ public class MagicBox<T> {
     T[] item;
 
     public MagicBox(int howManyObjects) {
-        item = (T[]) new Object[howManyObjects];
+        this.item = (T[]) new Object[howManyObjects];
     }
 
     public boolean add(T items) {
         for (int i = 0; i < item.length; i++) {
             if (item[i] == null) {
                 item[i] = items;
+                return true;
             }
-            return true;
         }
         return false;
     }
