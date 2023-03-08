@@ -5,6 +5,7 @@ import java.util.Random;
 public class MagicBox<T> {
     Random random = new Random();
     T[] item;
+
     public MagicBox(int howManyObjects) {
         item = (T[]) new Object[howManyObjects];
     }
