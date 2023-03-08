@@ -12,8 +12,9 @@ public class MagicBox<T> {
     public boolean add(T items) {
         for (int i = 0; i < item.length; i++) {
             if (item[i] == null) {
-                return true;
+                item[i] = items;
             }
+            return true;
         }
         return false;
     }
