@@ -1,4 +1,4 @@
-package GenericsInCollectionsAndMethods;
+package genericsInvollectionssndmethods;
 
 import java.util.Random;
 
@@ -8,6 +8,22 @@ public class MagicBox<T> {
 
     public MagicBox(int howManyObjects) {
         this.item = (T[]) new Object[howManyObjects];
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public T[] getItem() {
+        return item;
+    }
+
+    public void setItem(T[] item) {
+        this.item = item;
     }
 
     public boolean add(T items) {
