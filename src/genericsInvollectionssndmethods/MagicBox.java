@@ -3,8 +3,8 @@ package genericsInvollectionssndmethods;
 import java.util.Random;
 
 public class MagicBox<T> {
-    Random random = new Random();
-    T[] item;
+    private Random random = new Random();
+    private T[] item;
 
     public MagicBox(int howManyObjects) {
         this.item = (T[]) new Object[howManyObjects];
@@ -14,16 +14,8 @@ public class MagicBox<T> {
         return random;
     }
 
-    public void setRandom(Random random) {
-        this.random = random;
-    }
-
     public T[] getItem() {
         return item;
-    }
-
-    public void setItem(T[] item) {
-        this.item = item;
     }
 
     public boolean add(T items) {
