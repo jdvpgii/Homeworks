@@ -48,22 +48,28 @@ public class Main {
         try {
             System.out.println("Какую хотите удалить? Введите номер или название\n");
             String itemToDelete = bufferedReader.readLine();
-            listCart.remove(listCart.indexOf(itemToDelete));
+            if (isNumeric(itemToDelete)) {
+                listCart.remove(Integer.parseInt(itemToDelete)-1);
+            } else {
+                listCart.remove(listCart.indexOf(itemToDelete));
+            }
             System.out.println("Покупка "+ itemToDelete +" удалена, список покупок:");
             showCart();
-        } catch (IOException ioe) {
-            throw new RuntimeException(ioe);
-        } catch (NumberFormatException nfe) {
-            System.out.println("Все хуйня, Миш, давай по новой");
+        } catch (IOException | IndexOutOfBoundsException | NumberFormatException e) {
+            System.out.println("Все хйня, Миш, давай по новой");
         }
     }
-    /*
-    4.Find
-    операцию поиска покупок по ключевым словам.
-    При этом не должен учитываться регистр букв
-    (т.е. без разницы большая или маленькая)
-     */
     private static void findInCart() {
-        System.out.println("Введите текст для поиска:\n");
+
+    }
+
+    private static boolean isNumeric(String str) {
+        boolean num = true;
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isDigit(str.charAt(i))){
+                num = false;
+            }
+        }
+        return num;
     }
 }
