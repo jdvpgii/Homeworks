@@ -60,7 +60,14 @@ public class Main {
         }
     }
     private static void findInCart() {
-
+//        try {
+//            System.out.println("Введите текст для поиска:");
+//            String str = bufferedReader.readLine();
+//            str.toLowerCase();
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     private static boolean isNumeric(String str) {
