@@ -13,7 +13,7 @@ public class Main {
 
         while (!attraction.isEmpty()) {
             howManyTickets = attraction.peek().getTickets();
-            if (howManyTickets >= 1) {
+            if (howManyTickets > 1) {
                 person = attraction.poll();
                 person.setTickets((person.getTickets())-1);
                 System.out.println(person.getFirstName() + " прокатился на аттракционе. Осталось билетов: " + person.getTickets());
