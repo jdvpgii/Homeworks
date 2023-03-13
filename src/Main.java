@@ -24,7 +24,6 @@ public class Main {
                 System.out.println(person.getFirstName() + " прокатился на аттракционе. Осталось билетов: " + person.getTickets());
             }
         }
-
     }
 
     public static List<Person> generateClients() {
