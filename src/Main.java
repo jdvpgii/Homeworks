@@ -24,9 +24,17 @@ public class Main {
             }
         }
 
+        int max = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
         for (Map.Entry<Character, Integer> pair :
                 letters.entrySet()) {
-            System.out.println(pair.getKey() + ": " + pair.getValue());
+            if (pair.getValue() < min) {
+                min = pair.getValue();
+            }
+            if (pair.getValue() > max) {
+                max = pair.getValue();
+            }
         }
+        System.out.println("Min: " + min + "\tMax: " + max);
     }
 }
