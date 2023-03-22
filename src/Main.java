@@ -14,7 +14,7 @@ public class Main {
         char[] chars = getLorem().toCharArray();
 
         for (Character ch : chars) {
-            if (!letters.containsKey(ch)) {
+            if (!letters.containsKey(ch) & Character.isLetter(ch)) {
                 letters.put(ch, 1);
             } else {
                 for (Map.Entry<Character, Integer> pair : letters.entrySet()) {
@@ -26,15 +26,21 @@ public class Main {
 
         int max = Integer.MIN_VALUE;
         int min = Integer.MAX_VALUE;
+        char charMax = ' ';
+        char charMin = ' ';
+
         for (Map.Entry<Character, Integer> pair :
                 letters.entrySet()) {
             if (pair.getValue() < min) {
                 min = pair.getValue();
+                charMin = pair.getKey();
             }
             if (pair.getValue() > max) {
                 max = pair.getValue();
+                charMax = pair.getKey();
             }
         }
-        System.out.println("Min: " + min + "\tMax: " + max);
+        System.out.println(charMin + ": " + min);
+        System.out.println(charMax + ": " + max);
     }
 }
