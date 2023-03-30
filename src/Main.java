@@ -9,6 +9,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        WordsChecker wordsChecker = new WordsChecker(lorem);
         Map<Character, Integer> letters = new HashMap<>();
 
         char[] chars = getLorem().toCharArray();
@@ -42,5 +43,8 @@ public class Main {
         }
         System.out.println(charMin + ": " + min);
         System.out.println(charMax + ": " + max);
+
+        System.out.println(wordsChecker.hasWord("hello"));
+        System.out.println(wordsChecker.hasWord("dolore"));
     }
 }
