@@ -1,18 +1,13 @@
-public class Person {
+public class Person{
     private String name;
     private String surname;
     private int age;
-
-    // создайте конструктор на все поля
 
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
     }
-
-
-    // создайте геттеры и сеттеры
 
     public String getName() {
         return name;
@@ -38,10 +33,8 @@ public class Person {
         this.age = age;
     }
 
-    // создайте toString
-
     @Override
     public String toString() {
-        return super.toString();
+        return name + " " + surname + " " + age;
     }
 }
