@@ -12,7 +12,18 @@ public class Main {
         people.add(new Person("eroidf", "ekfnslk-xvxcv-weeqwfd-sdfs", 927));
         people.add(new Person("lsfdjs", "nfoidffdsfd", 451));
 
-        Collections.sort(people, new PersonsComparator());
+        Collections.sort (people, (p1, p2) -> {
+            int surNameWords1 = p1.getSurname().split("-").length;
+            int surNameWords2 = p2.getSurname().split("-").length;
+            if (surNameWords1 < surNameWords2) {
+                return -1;
+            } else if (surNameWords2 > surNameWords2) {
+                return 1;
+            } else {
+                return p1.getAge() - p2.getAge();
+            }
+        });
+
         System.out.println(people);
     }
 }
