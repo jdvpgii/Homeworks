@@ -1,7 +1,12 @@
 import java.io.File;
+import java.util.Map;
 
 public class Basket {
     //конструктор, принимающий массив цен и названий продуктов;
+    public Basket(Map<String, Integer> map) {
+    }
+
+    //TODO DELETE AFTER SOLUTION
     public Basket() {
     }
 
