@@ -1,42 +1,67 @@
-import java.io.File;
+import java.io.*;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Basket {
-    //конструктор, принимающий массив цен и названий продуктов;
-    public Basket(Map<String, Integer> map) {
+    private String[] products;
+    private int[] prices;
+    private int[] amountOfProducts;
+
+    public Basket(String[] products, int[] prices) {
+        this.products = products;
+        this.prices = prices;
+        this.amountOfProducts = new int[products.length];
     }
 
-    //TODO DELETE AFTER SOLUTION
-    public Basket() {
+    public void addToCart(int productNum, int amount) {
+        amountOfProducts[productNum] += amount;
     }
 
-    //метод добавления amount штук продукта номер productNum в корзину;
-    void addToCart(int productNum, int amount){
-
+    public void printCart() {
+        int sum = 0;
+        System.out.println("Ваша корзина:");
+        for (int i = 0; i < amountOfProducts.length; i++) {
+            if (amountOfProducts[i] > 0) {
+                System.out.println(products[i] + " - " + amountOfProducts[i] + " шт., " + prices[i] + " руб. за шт., " + amountOfProducts[i] * prices[i] + " руб. в сумме");
+                sum += amountOfProducts[i] * prices[i];
+            }
+        }
+        System.out.println("Итого " + sum + " руб");
     }
 
-    //метод вывода на экран покупательской корзины
-    void printCart() {
-
+    public void saveTxt(File textFile) throws IOException {
+        try (FileWriter file = new FileWriter(textFile);
+             PrintWriter out = new PrintWriter(file)) {
+            for (String product : products) {
+                out.print(product + " ");
+            }
+            out.println();
+            for (int price : prices) {
+                out.print(price + " ");
+            }
+            out.println();
+            for (int amount : amountOfProducts) {
+                out.print(amount + " ");
+            }
+        }
     }
 
-    //метод сохранения корзины в текстовый файл; использовать встроенные сериализаторы нельзя;
-    void saveTxt() {
-
+    public static Basket loadFromTxtFile(File textFile) throws IOException {
+        try (BufferedReader in = new BufferedReader(new FileReader(textFile))) {
+            String[] products = in.readLine().split(" ");
+            String[] prices = in.readLine().split(" ");
+            int[] convertedPrices = new int[prices.length];
+            for (int i = 0; i < prices.length; i++) {
+                convertedPrices[i] = Integer.parseInt(prices[i]);
+            }
+            String[] amount = in.readLine().split(" ");
+            int[] convertedAmount = new int[amount.length];
+            for (int ii = 0; ii < amount.length; ii++) {
+                convertedAmount[ii] = Integer.parseInt(amount[ii]);
+            }
+            Basket result = new Basket(products, convertedPrices);
+            result.amountOfProducts = convertedAmount;
+            return result;
+        }
     }
-
-    //статический(!) метод восстановления объекта корзины из текстового файла, в который ранее была она сохранена;
-    static Basket loadFromTxtFile(File textFile) {
-        return new Basket();
-    }
-
-    //для сохранения в файл в бинарном формате.
-    void saveBin(File file) {
-
-    }
-    // для загрузки корзины из бинарного файла.
-    static Basket loadFromBinFile(File file) {
-        return new Basket();
-    }
-
 }
