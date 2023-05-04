@@ -62,4 +62,13 @@ public class Basket {
             return result;
         }
     }
+
+    static Basket loadFromBinFile(File file) throws IOException, ClassNotFoundException{
+        try (FileInputStream fis = new FileInputStream(file);
+             FileOutputStream fos = new FileOutputStream(file)) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+
+            return (Basket) ois.readObject();
+        }
+    }
 }
