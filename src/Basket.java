@@ -44,6 +44,13 @@ public class Basket {
         }
     }
 
+    public void saveBin(File file) throws IOException {
+        try (FileOutputStream fos = new FileOutputStream("basket.bin");
+             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+            oos.writeObject(Main.basket);
+        }
+    }
+
     public static Basket loadFromTxtFile(File textFile) throws IOException {
         try (BufferedReader in = new BufferedReader(new FileReader(textFile))) {
             String[] products = in.readLine().split(" ");
